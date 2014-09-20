@@ -20,7 +20,7 @@ app.get('/start',function(req, res){
      //Render the TwiML document using "toString"
    res.writeHead(200, {'Content-Type':'text/xml'});
 	 res.end(resp.toString());
-	);
+}	);
 
 app.listen(process.env.PORT || 80);
 console.log('server started');
