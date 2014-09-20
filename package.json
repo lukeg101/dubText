@@ -1,0 +1,20 @@
+{
+	"name":"dubText",
+	"version":"0.0.0",
+	"description":"text to sound synthesizer",
+	"main":"index.js",
+	"id":"dubText",
+	"repository": {
+		"type":"git",
+		"url":"https://github.com/programMint/dubText.git"
+	}, 
+	"engines": {
+		"node":"*",
+		"npm":"*"
+	},
+	"dependencies":{
+		"express":"*",
+		"body-parser":"*",
+		"twilio":"*"
+	}
+}
