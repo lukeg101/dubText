@@ -1,8 +1,13 @@
-var http = require('http'),
-	twilio = require('twilio');
+var express = require('express'),
+	twilio = require('twilio'),
+	body_parser = require('body-parser'),
+	app = express();
 
-http.createServer(function(req, res){
-	var resp = new twilio.TwimlResponse();
-	resp.say({voice:'woman'},'Play that massive techno beat!');
-}).listen(80);
-console.log('Server started');
+
+app.get('/',function(req, res){
+	console.log('get request received');
+	res.send('hello world');	
+});
+
+app.listen(process.env.port || 80);
+console.log('server started');
