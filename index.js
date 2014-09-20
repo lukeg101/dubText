@@ -11,8 +11,10 @@ app.get('/', function(req, res){
 
 app.get('/start',function(req, res){
 	console.log('get request received');
-	res.end(req);
 	var resp = new twilio.TwimlResponse();
+	resp.say({voice:'woman'},'hello');
+	res.writeHead({Content-Type:'text/xml'});
+	res.end(resp.toString());
 });
 
 app.listen(process.env.PORT || 80);
