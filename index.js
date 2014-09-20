@@ -9,5 +9,5 @@ app.get('/',function(req, res){
 	res.send('hello world');	
 });
 
-app.listen(process.env.port || 80);
+app.listen(process.env.PORT || 80);
 console.log('server started');
