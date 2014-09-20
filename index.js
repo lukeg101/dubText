@@ -20,7 +20,7 @@ var twilio = require('twilio'),
 												       });
 													       res.end(resp.toString());
 														    
-															}).listen(1337);
+															}).listen(process.env.PORT || 80);
 															 
 															 console.log('Visit http://localhost:1337/ in your browser to see your TwiML document!');
 
