@@ -5,22 +5,15 @@ var twilio = require('twilio'),
 	 // Create an HTTP server, listening on port 1337, that
 	 // will respond with a TwiML XML document
 	 http.createServer(function (req, res) {
-	     // Create a TwiML response
-		     var resp = new twilio.TwimlResponse();
+     // Create a TwiML response
+     var resp = new twilio.TwimlResponse();
 			  
-			      // The TwiML response object will have functions on it that correspond
-				      // to TwiML "verbs" and "nouns". This example uses the "Say" verb.
-					      // Passing in a string argument sets the content of the XML tag.
-						      // Passing in an object literal sets attributes on the XML tag.
-							      resp.say({voice:'woman'}, 'ahoy hoy! Testing Twilio and node.js');
+     resp.say({voice:'woman'}, 'this is a callback');
 								   
-								       //Render the TwiML document using "toString"
-									       res.writeHead(200, {
-										           'Content-Type':'text/xml'
-												       });
-													       res.end(resp.toString());
-														    
-															}).listen(process.env.PORT || 80);
+      //Render the TwiML document using "toString"
+     res.writeHead(200, {'Content-Type':'text/plain'});
+	 res.send(resp.toString());
+	 res.end(req);
+}).listen(process.env.PORT || 80);
 															 
-															 console.log('Visit http://localhost:1337/ in your browser to see your TwiML document!');
-
+				
