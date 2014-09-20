@@ -6,12 +6,12 @@ var express = require('express'),
 
 app.get('/', function(req, res){
 	res.end('end');
-})
+});
 
 
 app.get('/start',function(req, res){
 	console.log('get request received');
-	console.log(req);
+	res.end(req);
 	var resp = new twilio.TwimlResponse();
 });
 
