@@ -2,7 +2,6 @@
 	"name":"dubText",
 	"version":"0.0.0",
 	"description":"text to sound synthesizer",
-	"main":"app.js",
 	"id":"dubText",
 	"repository": {
 		"type":"git",
