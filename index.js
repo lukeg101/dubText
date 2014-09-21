@@ -1,19 +1,27 @@
-// Require the twilio and HTTP modules
-var twilio = require('twilio'),
-    http = require('http');
-	 
-	 // Create an HTTP server, listening on port 1337, that
-	 // will respond with a TwiML XML document
-	 http.createServer(function (req, res) {
-     // Create a TwiML response
-     var resp = new twilio.TwimlResponse();
-			  
-     resp.say({voice:'woman'}, 'this is a callback');
-								   
-      //Render the TwiML document using "toString"
-     res.writeHead(200, {'Content-Type':'text/plain'});
-	 res.send(resp.toString());
-	 res.end(req);
-}).listen(process.env.PORT || 80);
-															 
-				
+//module dependencies
+
+var express = require('express'),
+	body_parser = require('body-parser'),
+	child_process = require('child_process'),
+	fs = require('fs'),
+	app = express();
+
+//middleware
+app.use(body_parser.urlencoded({extended: false}));
+app.use(express.static('./public'));
+
+
+//pick up post request, generate files and send output
+app.post('/', function(req, res){
+	child_process.spawn('chooseRandom.sh');
+	fs.readFile(function(err, data){
+		if(!err){
+			res.writeHead(200, {'Content-Type':'audio/mpeg'});
+			res.end(data);
+		} else {
+			console.err(err);
+		}
+	});
+});
+
+app.listen(80);
