@@ -1,3 +1,5 @@
+//Module dependencies
+
 var express = require('express'),
 	body_parser = require('body-parser'),
 	twilio = require('twilio'),
@@ -5,48 +7,40 @@ var express = require('express'),
 	fs = require('fs'),
 	app = express();
 
+//variables
 var client = new twilio.RestClient('AC37cb5af509c24ae9dbe5c01e48d1f412', '048f0c1de0b8c3978539dac94ac0fe8d');
 
-/*client.sendSms({
-		From:'+441522246127',
-		To:'+447597576473',
-		Body:'ya'
-	}, function(err, data){
-	if(!err){
-		console.log(data.from + " " + data.body);
-	} else {
-		console.log(err);
-	}
-});*/
-
+//middleware and static serving
 app.use(body_parser.urlencoded({ extended: false }));
-app.use(express.static('./public/'));
-app.use(express.static('./dubstep/sound/'));
 
+//routes
 app.get('/upload', function(req, res){
 	//get and parse data input
 	console.log(req.query);//Body and From
 	
 	//pass in and run external command
-	//spawn('./dubstep/chooseRandom.sh');
+	spawn('./dubstep/chooseRandom.sh');
 	//deliver text file response
 	console.log(req.query.From);
-	sendMsg(res, req.query.From);
+	sendMsg(req.query.From);
 });
 
 app.get('/play', function(req, res){
 	res.set('Content-Type','text/xml');
 	console.log('yes');
-	res.end('<Response><Play>./sound.mp3</Play></Response>');
+	res.end('<Response><Play>./dubstep/sound/sound.mp3</Play></Response>');
 });
+
+app.use(express.static('./public/'));
 
 app.listen(process.env.PORT || 80, console.log('server started'));
 
-function sendMsg(res, dest){
+//additionally functionality to compliment the routes
+function sendMsg(dest){
 	client.makeCall({
 		to:dest,
 		from:'+441522246127',
-		url:'./play/'
+		url:'/play'
 	}, function(err, data){
 		if(!err){
 			console.log(data.from);
