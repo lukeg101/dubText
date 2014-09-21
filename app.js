@@ -28,10 +28,11 @@ app.get('/upload', function(req, res){
 app.get('/play', function(req, res){
 	res.set('Content-Type','text/xml');
 	console.log('yes');
-	res.end('<Response><Play>./dubstep/sound/sound.mp3</Play></Response>');
+	res.end('<Response><Play>http://dubtext.herokuapp.com/sound.mp3</Play></Response>');
 });
 
 app.use(express.static('./public/'));
+app.use(express.static('./dubstep/sound/'));
 
 app.listen(process.env.PORT || 80, console.log('server started'));
 
