@@ -29,8 +29,13 @@ app.post('/play', function(req, res){
 	res.set('Content-Type','text/xml');
 	console.log('yes');
 	var rand = (Math.floor((Math.random()*20) %21) +1);
-	console.log(rand);
-	res.send('<Response><Play>http://dubtext.herokuapp.com/sound' + rand  + '.mp3</Play></Response>');
+	var sum = req.query.Body.split(' ').forEach(function(){sum += this.parseInt();});
+	if(sum >= 0){
+		sum = (sum % 21)+1;
+		res.send('<Response><Play>http://dubtext.herokuapp.com/sound' + sum  + '.mp3</Play></Response>');
+	} else {
+		res.send('<Response><Play>http://dubtext.herokuapp.com/sound' + rand  + '.mp3</Play></Response>');
+	}
 	res.end();
 });
 
