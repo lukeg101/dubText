@@ -46,7 +46,7 @@ function sendMsg(res, dest){
 	client.makeCall({
 		to:dest,
 		from:'+441522246127',
-		url:'./play'
+		url:'./play/'
 	}, function(err, data){
 		if(!err){
 			console.log(data.from);

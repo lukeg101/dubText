@@ -6,3 +6,4 @@ int main(int argc, char** argv)
 		putchar(t*(((t>>9)&10)|((t>>11)&24)^((t>>10)&15&(t>>15))));
 	}
 }
+

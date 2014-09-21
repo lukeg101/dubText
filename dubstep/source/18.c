@@ -3,6 +3,6 @@
 int main(int argc, char** argv)
 {
 	for(int t =0;t < 300000;t++){
-		putchar(((t*(t>>8|t>>9)&46&t>>8))^(t&t>>13|t>>6));
+		putchar(t>>16|((t>>4)%16)|((t>>4)%192)|(t*t%64)|(t*t%96)|(t>>16)*(t|t>>5));
 	}
 }
