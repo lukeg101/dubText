@@ -28,7 +28,9 @@ app.get('/upload', function(req, res){
 app.post('/play', function(req, res){
 	res.set('Content-Type','text/xml');
 	console.log('yes');
-	res.send('<Response><Play>http://dubtext.herokuapp.com/sound.mp3</Play></Response>');
+	var rand = (Math.floor()(Math.random()*20) %21) +1;
+	console.log(rand);
+	res.send('<Response><Play>http://dubtext.herokuapp.com/sound' + rand  + '.mp3</Play></Response>');
 	res.end();
 });
 
