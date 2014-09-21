@@ -1,19 +1,19 @@
 {
-	"name":"dubText",
-	"version":"0.0.0",
-	"description":"text to sound synthesizer",
-	"id":"dubText",
-	"repository": {
-		"type":"git",
-		"url":"https://github.com/programMint/dubText.git"
-	}, 
-	"engines": {
-		"node":"*",
-		"npm":"*"
-	},
-	"dependencies":{
-		"express":"*",
-		"body-parser":"*",
-		"twilio":"*"
-	}
+  "name": "dubText",
+  "version": "0.0.0",
+  "description": "text to sound synthesizer",
+  "id": "dubText",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/programMint/dubText.git"
+  },
+  "engines": {
+    "node": ">=0.11.13",
+    "npm": "*"
+  },
+  "dependencies": {
+    "body-parser": "^1.8.3",
+    "express": "^4.9.4",
+    "twilio": "^1.7.0"
+  }
 }
