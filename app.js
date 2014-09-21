@@ -28,7 +28,8 @@ app.get('/upload', function(req, res){
 app.get('/play', function(req, res){
 	res.set('Content-Type','text/xml');
 	console.log('yes');
-	res.end('<Response><Play>http://dubtext.herokuapp.com/sound.mp3</Play></Response>');
+	res.send('<Response><Play>http://dubtext.herokuapp.com/sound.mp3</Play></Response>');
+	res.end();
 });
 
 app.use(express.static('./public/'));
